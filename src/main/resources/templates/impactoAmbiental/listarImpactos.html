@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlms:th="http://thymeleaf.org"
+	  xmlms:layout="http://ultraq.net.nz/thymeleaf/Layout">
+	  
+	  <head>
+	  <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" >
+	  <title>Uniambiental</title>
+	  </head>
+	  
+	  <body>
+	  <nav class="nav-extended">
+	    <div class="nav-wrapper">
+	      <a href="#" class="brand-logo">UniAmbiental</a>
+	      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <li><a href="badges.html">Meu perfil</a></li>
+	        <li><a href="collapsible.html">Sair</a></li>
+	      </ul>
+	    </div>
+	    <div class="nav-content">
+	      <ul class="tabs tabs-transparent">
+	        <li class="tab"><a href="/acoes"><i class="material-icons left">event_note</i>Ações</a></li>
+	        <li class="tab"><a href="/impactos"><i class="material-icons left">nature</i>Impacto ambiental</a></li>
+	        <li class="tab"><a href="/inconformidades"><i class="material-icons left">error</i>Inconformidades</a></li>        
+	      </ul>
+	    </div>
+	    </nav>
+	    <div class="container">
+			<div class="row"></div>
+			<div class="row">
+				<h5>Listagem de impactos ambientais</h5> 
+			</div>
+			<div class="row">
+			<a class="waves-effect waves-light btn" href="/cadastrarImpactoAmbiental"><i class="material-icons left">add</i>Novo impacto ambiental</a>
+			</div>
+		</div>
+		
+		<table class="container">
+			<thead>
+				<tr>
+					<td><b>Obra</b></td>
+					<td><b>Número</b></td>
+					<td><b>Descrição</b></td>
+					<td><b>Análise</b></td>
+					<td><b>Grupo de impacto</b></td>
+					<td><b>Situação</b></td>
+					<td><b>Data de auditoria</b></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="impacto : ${impactos}">
+					<td><span th:text="${impacto.obra}"></span></td>
+					<td><span th:text="${impacto.codigo}"></span></td>
+					<td><a th:href="${(#mvc.url('IAC#editarImpacto').arg(0, impacto.codigo)).build()}"><span th:text="${impacto.descricao}"></span></a></td>
+					<td><span th:text="${impacto.analise}"></span></td>
+					<td><span th:text="${impacto.grupoDeImpacto}"></span></td>
+					<td><span th:text="${impacto.situacao}"></span></td>
+					<td><span th:text="${impacto.data}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+		
+	  	
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>	  
+	  </body>
+
+</html>

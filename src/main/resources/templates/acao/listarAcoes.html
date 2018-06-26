@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlms:th="http://thymeleaf.org"
+	  xmlms:layout="http://ultraq.net.nz/thymeleaf/Layout">
+	  
+	  <head>
+	  <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" >
+	  <title>Uniambiental</title>
+	  </head>
+	  
+	  <body>
+	  <nav class="nav-extended">
+	    <div class="nav-wrapper">
+	      <a href="#" class="brand-logo">UniAmbiental</a>
+	      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+	        <li><a href="badges.html">Meu perfil</a></li>
+	        <li><a href="collapsible.html">Sair</a></li>
+	      </ul>
+	    </div>
+	    <div class="nav-content">
+	      <ul class="tabs tabs-transparent">
+	        <li class="tab"><a href="/acoes"><i class="material-icons left">event_note</i>Ações</a></li>
+	        <li class="tab"><a href="/impactos"><i class="material-icons left">nature</i>Impacto ambiental</a></li>
+	        <li class="tab"><a href="/inconformidades"><i class="material-icons left">error</i>Inconformidades</a></li>
+	        <li class="tab"><a href="/obras"><i class="material-icons left">event_note</i>Obras</a></li>        
+	      </ul>
+	    </div>
+	    </nav>
+	    <div class="container">
+			<div class="row"></div>
+			<div class="row">
+				<h5>Listagem de ações</h5> 
+			</div>
+			<div class="row">
+			<a class="waves-effect waves-light btn" href="/cadastrarAcao"><i class="material-icons left">add</i>Nova ação</a>
+			</div>
+		</div>
+		
+		<table class="container">
+			<thead>
+				<tr>
+					<td><b>Número</b></td>
+					<td><b>Descrição</b></td>
+					<td><b>Situação</b></td>
+					<td><b>Setor</b></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="acao : ${acoes}">
+					<td><span th:text="${acao.codigo}"></span></td>
+					<td><a th:href="${(#mvc.url('AC#editarAcao').arg(0, acao.codigo)).build()}"><span th:text="${acao.descricao}"></span></a></td>
+					<td><span th:text="${acao.situacao}"></span></td>
+					<td><span th:text="${acao.setor.getResponsabilidade()}"></span></td>
+				</tr>
+			</tbody>
+		</table>
+		
+	  	
+	  	
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>	  
+	  </body>
+
+</html>
