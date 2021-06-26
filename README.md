@@ -1,6 +1,6 @@
-# Padrões de projeto
+# Java Spring Framework appication
 
-Projeto da Desenvolvimento de software II da @Unsinos.
+Projeto desenvolvido durante a disciplina de Desenvolvimento de software II na UNIVERSIDADE DO VALE DO RIO DOS SINOS.
 
 ## Objetivo do projeto
 
